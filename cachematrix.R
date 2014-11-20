@@ -11,11 +11,14 @@
 ## the matrix data. set_inv loads data of the inverse of the martrix. get_inv
 ## retrieves the inverse of the matrix data. This method utilizes the '<<-'
 ## operator which allows for assignment of values to objects which exist in an
-## environment other than the current environment.
+## environment other than the current environment. This function requires that
+## the matrix be square and throws an exception otherwise.
 
 makeCacheMatrix <- function(x = matrix()) {
+    if (nrow(x) != ncol(x)) stop ('matrix must be square')
     inv <- NULL
     set <- function(y) {
+        if (nrow(y) != ncol(y)) stop ('matrix must be square')
         x <<- y
         inv <<- NULL
     }
