@@ -5,14 +5,14 @@
 ## then be retrieved from the cache.
 
 
-## makeCacheMatrix creates an empty cached matrix with data attribute, inv,
-## and method attributes, set, get, set_inv, and get_inv. inv is the inverse
-## of the matrix. set loads matrix data into the cached matrix. get retrieves
-## the matrix data. set_inv loads data of the inverse of the martrix. get_inv
-## retrieves the inverse of the matrix data. This method utilizes the '<<-'
-## operator which allows for assignment of values to objects which exist in an
-## environment other than the current environment. This function requires that
-## the matrix be square and throws an exception otherwise.
+## makeCacheMatrix creates an empty cached matrix. It returns a list object
+## containing functions set(), get(), set_inv(), and get_inv(). set() loads
+## matrix data into the cached matrix. get() retrieves the matrix data.
+## set_inv() loads data of the inverse of the martrix. get_inv() retrieves the
+## inverse of the matrix data. This method utilizes the '<<-' operator which
+## allows for assignment of values to objects which exist in an environment
+## other than the current environment. This function requires that the matrix
+## be square and throws an exception otherwise.
 
 makeCacheMatrix <- function(x = matrix()) {
     if (nrow(x) != ncol(x)) stop ('matrix must be square')
@@ -34,10 +34,10 @@ makeCacheMatrix <- function(x = matrix()) {
 
 ## cacheSolve retrieves the inverse of the matrix. If the inverse exists
 ## in the cache, a message telling the user that the inverse is being
-## retrieved from the cache and the inverse matrix is returned. If it does
-## not, the cached matrix is retrieved and its inverse matrix is computed
-## using the solve function. The inverse matrix is loaded into the cache and
-## then the inverse matrix is returned.
+## retrieved from the cache is printed and the inverse matrix is returned. If
+## it does not, the cached matrix is retrieved and its inverse matrix is
+## computed using the solve function. The inverse matrix is loaded into the
+## cache and then the inverse matrix is returned.
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
